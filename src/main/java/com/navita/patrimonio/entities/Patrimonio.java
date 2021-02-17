@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.navita.patrimonio.TO.PatrimonioTO;
+
 @Entity
 @Table(name="Patrimonios")
 public class Patrimonio {
@@ -41,6 +43,12 @@ public class Patrimonio {
 		this.descricao = descricao;
 		this.numeroTombo = numeroTombo;
 		this.marca = marca;
+	}
+	
+	public Patrimonio(PatrimonioTO patrimonioTO) {
+		this.nome = patrimonioTO.getNome();
+		this.descricao = patrimonioTO.getDescricao();
+		this.marca = patrimonioTO.getMarca();
 	}
 
 	public Long getIdPatrimonio() {
