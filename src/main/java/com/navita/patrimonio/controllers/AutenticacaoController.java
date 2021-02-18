@@ -3,7 +3,6 @@ package com.navita.patrimonio.controllers;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.navita.patrimonio.TO.LoginTO;
+import com.navita.patrimonio.TO.TokenTO;
 import com.navita.patrimonio.security.TokenService;
 
 @RestController
@@ -30,13 +30,12 @@ public class AutenticacaoController {
 	private TokenService tokenService;
 	
 	@PostMapping
-	public ResponseEntity<?> autenticar(@RequestBody @Valid LoginTO loginTO){
+	public ResponseEntity<TokenTO> autenticar(@RequestBody @Valid LoginTO loginTO){
 		try {
 			UsernamePasswordAuthenticationToken dadosLogin = new UsernamePasswordAuthenticationToken(loginTO.getEmail(), loginTO.getSenha());
 			Authentication authenticate = authManager.authenticate(dadosLogin);
 			String token = tokenService.gerarToken(authenticate);
-			System.out.println(token);
-			return ResponseEntity.ok().build();
+			return ResponseEntity.ok(new TokenTO(token, "Bearer"));
 			
 		} catch (AuthenticationException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
