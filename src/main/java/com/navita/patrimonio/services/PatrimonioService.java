@@ -78,5 +78,4 @@ public class PatrimonioService {
 			throw new Exception(e.getMessage());
 		}
 	}
-
 }

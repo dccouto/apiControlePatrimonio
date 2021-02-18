@@ -40,7 +40,6 @@ class MarcaServiceTest {
 		String nomeAtualizado = "nomeAtualizado";
 		Marca marcaAtualizada = new Marca(idMarca, nomeAtualizado);
 		
-		Marca marcaATual;
 
 		when(marcaRepository.findById(idMarca)).thenReturn(Optional.ofNullable(marca));
 		when(marcaRepository.save(marca)).thenReturn(marcaAtualizada);
