@@ -16,7 +16,7 @@ import com.navita.patrimonio.services.MarcaService;
 
 @RestController
 @RequestMapping(value = "/api/marca")
-public class marcaController {
+public class MarcaController {
 
 	@Autowired
 	private MarcaService marcaService;

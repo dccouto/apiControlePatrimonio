@@ -19,7 +19,7 @@ import com.navita.patrimonio.services.PatrimonioService;
 
 @RestController
 @RequestMapping("/api/patrimonio")
-public class patrimonioController {
+public class PatrimonioController {
 	
 	@Autowired
 	private PatrimonioService patrimonioService;

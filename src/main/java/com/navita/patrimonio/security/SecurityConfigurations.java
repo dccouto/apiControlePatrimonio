@@ -51,6 +51,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 		
 		.antMatchers(HttpMethod.GET,"/").permitAll()
 		.antMatchers(HttpMethod.POST,"/api/auth").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/usuario/cadastrar").permitAll()
 		
 		//Para todas as demais url precisam de autenticação
 		.anyRequest().authenticated()
@@ -63,7 +64,6 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 	//Configuração de recursos estáticos
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-	    web.ignoring().antMatchers(HttpMethod.POST, "/api/usuario/cadastrar");
         web.ignoring().antMatchers(HttpMethod.GET, "/h2-console/**"); //liberando o acesso a interface do banco de dados em memória
         web.ignoring().antMatchers(HttpMethod.POST, "/h2-console/**"); //liberando o acesso a interface do banco de dados em memória
 	}
