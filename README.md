@@ -1,4 +1,4 @@
-# Desafio Java - REST API - Movie Challenge
+# Desafio Java - REST API - Patrimônio
 
 O [patrimônio] disponibiliza uma API REST que disponibliza os recursos para realizar o controle de inventário de uma empresa ou afins.
 
