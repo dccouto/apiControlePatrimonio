@@ -241,7 +241,7 @@ Cria e consulta as informações do patrimônio
 		"idMarca": 1
 	    }
 	}
-```
+	```
 
 + Response 201 (application/json)
 	
