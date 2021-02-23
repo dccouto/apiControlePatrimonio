@@ -92,13 +92,13 @@ Cadastra um novo usuário no sistema
 
     + Body
 
-```json
-{
-    "nome": "user_1",
-    "email": "user_1@email.com",
-    "senha": "123456"
-}
-```
+	```json
+	{
+	    "nome": "user_1",
+	    "email": "user_1@email.com",
+	    "senha": "123456"
+	}
+	```
 
 + Response 201 (application/json)
 
@@ -118,22 +118,22 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 
-```json
-{
-    "nome": "Dell"
-}
-```
+	```json
+	{
+	    "nome": "Dell"
+	}
+	```
 
 + Response 201 (application/json)
 	
 	+ Body
 	
-```json
-{
-    "idMarca": 1,
-    "nome": "Dell"
-}
-```
+	```json
+	{
+	    "idMarca": 1,
+	    "nome": "Dell"
+	}
+	```
 
 + Response 204 (application/json)
 
@@ -150,18 +150,18 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 	
-```json
-[
-    {
-        "idMarca": 1,
-        "nome": "Dell"
-    },
-    {
-        "idMarca": 2,
-        "nome": "CCE"
-    }
-]
-```
+	```json
+	[
+	    {
+		"idMarca": 1,
+		"nome": "Dell"
+	    },
+	    {
+		"idMarca": 2,
+		"nome": "CCE"
+	    }
+	]
+	```
 
 ### Buscar marca por id (Read) [GET /{id}]
 `http://localhost:8080/api/marca/1`
@@ -179,12 +179,12 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 	
-```json
-{
-    "idMarca": 1,
-    "nome": "Dell"
-}
-```
+	```json
+	{
+	    "idMarca": 1,
+	    "nome": "Dell"
+	}
+	```
 
 ### Atualizar marca (Update) [PUT /atualizar/{id}]
 `http://localhost:8080/api/marca/atualizar/1`
@@ -200,22 +200,22 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 
-```json
-{
-    "nome": "Lenovo"
-}
-```
+	```json
+	{
+	    "nome": "Lenovo"
+	}
+	```
 
 + Response 200 (application/json)
 	
 	+ Body
 	
-```json
-{
-    "idMarca": 1,
-    "nome": "Lenovo"
-}
-```
+	```json
+	{
+	    "idMarca": 1,
+	    "nome": "Lenovo"
+	}
+	```
 
 <a id="patrimonio"></a>
 # Patrimônio [/api/patrimonio]
@@ -233,32 +233,32 @@ Cria e consulta as informações do patrimônio
 
     + Body
 
-```json
-{
-    "nome": "Monitor",
-    "descricao": "sala de TI3",
-    "marca": {
-        "idMarca": 1
-    }
-}
+	```json
+	{
+	    "nome": "Monitor",
+	    "descricao": "sala de TI3",
+	    "marca": {
+		"idMarca": 1
+	    }
+	}
 ```
 
 + Response 201 (application/json)
 	
 	+ Body
 	
-```json
-{
-    "idPatrimonio": 3,
-    "nome": "Monitor",
-    "descricao": "sala de TI3",
-    "numeroTombo": 3,
-    "marca": {
-        "idMarca": 1,
-        "nome": null
-    }
-}
-```			
+	```json
+	{
+	    "idPatrimonio": 3,
+	    "nome": "Monitor",
+	    "descricao": "sala de TI3",
+	    "numeroTombo": 3,
+	    "marca": {
+		"idMarca": 1,
+		"nome": null
+	    }
+	}
+	```			
 
 ### Listar todas os Patrimônios cadastrados (Read) [GET /buscar]
 `http://localhost:8080/api/patrimonio/buscar`
@@ -273,30 +273,30 @@ Cria e consulta as informações do patrimônio
 
     + Body
 	
-```json
-[
-    {
-        "idMarca": 1,
-        "nome": "Monitor",
-        "descricao": "sala de TI3",
-        "numeroTombo": 1,
-        "marca": {
-            "idMarca": 1,
-            "nome": "Dell"
-        }
-    },
-    {
-        "idMarca": 2,
-        "nome": "Teclado",
-        "descricao": "sala de Conferência",
-        "numeroTombo": 2,
-        "marca": {
-            "idMarca": 1,
-            "nome": "Dell"
-        }
-    }
-]
-```
+	```json
+	[
+	    {
+		"idMarca": 1,
+		"nome": "Monitor",
+		"descricao": "sala de TI3",
+		"numeroTombo": 1,
+		"marca": {
+		    "idMarca": 1,
+		    "nome": "Dell"
+		}
+	    },
+	    {
+		"idMarca": 2,
+		"nome": "Teclado",
+		"descricao": "sala de Conferência",
+		"numeroTombo": 2,
+		"marca": {
+		    "idMarca": 1,
+		    "nome": "Dell"
+		}
+	    }
+	]
+	```
 
 ### Listar o Patrimônio cadastrado por ID (Read) [GET /buscar/{id}]
 `http://localhost:8080/api/patrimonio/buscar/1`
@@ -314,18 +314,18 @@ Cria e consulta as informações do patrimônio
 	
 	+ Body
 	
-```json
-{
-    "idPatrimonio": 1,
-    "nome": "Monitor",
-    "descricao": "sala de TI3",
-    "numeroTombo": 1,
-    "marca": {
-        "idMarca": 1,
-        "nome": "Lenovo"
-    }
-}
-```
+	```json
+	{
+	    "idPatrimonio": 1,
+	    "nome": "Monitor",
+	    "descricao": "sala de TI3",
+	    "numeroTombo": 1,
+	    "marca": {
+		"idMarca": 1,
+		"nome": "Lenovo"
+	    }
+	}
+	```
 
 ### Buscar o Patrimônio cadastrado por número do inventário (Read) [GET /buscar/numero-tombo/{id}]
 `http://localhost:8080/api/patrimonio/buscar/numero-tombo/1`
@@ -343,17 +343,17 @@ Cria e consulta as informações do patrimônio
 	
 	+ Body
 	
-```json
-{
-    "idPatrimonio": 1,
-    "nome": "Monitor",
-    "descricao": "sala de TI3",
-    "numeroTombo": 1,
-    "marca": {
-        "idMarca": 1,
-        "nome": "Lenovo"
-    }
-}
-```
+	```json
+	{
+	    "idPatrimonio": 1,
+	    "nome": "Monitor",
+	    "descricao": "sala de TI3",
+	    "numeroTombo": 1,
+	    "marca": {
+		"idMarca": 1,
+		"nome": "Lenovo"
+	    }
+	}
+	```
 
 [Início](#inicio)
