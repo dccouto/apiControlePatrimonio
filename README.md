@@ -7,7 +7,7 @@ O [**patrimônio**] disponibiliza uma API REST que disponibliza os recursos para
 Recursos disponíveis para acesso via API:
 * [**Marca**](#marca)
 * [**Patrimônio**](#patrimonio)
-* [**Usuários**](#usuarios)
+* [**Usuários**](#usuario)
 
 ## Informações importantes
 ### Banco de dados
