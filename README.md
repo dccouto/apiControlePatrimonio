@@ -4,9 +4,9 @@ O [patrimônio] disponibiliza uma API REST que disponibliza os recursos para rea
 
 
 Recursos disponíveis para acesso via API:
-* [**Marca**](#reference/marca)
-* [**Patrimônio**](#reference/patrimônio)
-* [**Usuários**](#reference/usuarios)
+* [**Marca**](#marca)
+* [**Patrimônio**](#patrimônio)
+* [**Usuários**](#usuarios)
 
 ## Informações importantes
 ### Banco de dados
@@ -73,16 +73,15 @@ Para utilizar a API, você precisará utilizar uma das seguintes opções:
 
 # Group Recursos
 
-
+<a id="usuario"></a>
 # Usuario [/api/usuario]
 
 Cadastra um novo usuário no sistema
 
 
 ### Criar usuário (Create) [POST /cadastrar]
-	```
-	http://localhost:8080/api/usuario/cadastrar
-	```
+`http://localhost:8080/api/usuario/cadastrar`
+
 
 + Attributes (object)
 
