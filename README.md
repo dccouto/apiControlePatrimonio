@@ -1,6 +1,7 @@
+<a id="inicio"></a>
 # Desafio Java - REST API - Patrimônio
 
-O [patrimônio] disponibiliza uma API REST que disponibliza os recursos para realizar o controle de inventário de uma empresa ou afins.
+O [**patrimônio**] disponibiliza uma API REST que disponibliza os recursos para realizar o controle de inventário de uma empresa ou afins.
 
 
 Recursos disponíveis para acesso via API:
@@ -78,10 +79,8 @@ Para utilizar a API, você precisará utilizar uma das seguintes opções:
 
 Cadastra um novo usuário no sistema
 
-
 ### Criar usuário (Create) [POST /cadastrar]
 `http://localhost:8080/api/usuario/cadastrar`
-
 
 + Attributes (object)
 
@@ -89,63 +88,57 @@ Cadastra um novo usuário no sistema
     + email: email do usuario que será utilizado para realizar o login (string, required)
 	+ senha: senha do usuário (string, required)
 
-
 + Request (application/json)
 
     + Body
 
-			{
-				"nome": "user_1",
-				"email": "user_1@email.com",
-				"senha": "123456" 
-			}
+```json
+{
+    "nome": "user_1",
+    "email": "user_1@email.com",
+    "senha": "123456"
+}
+```
 
 + Response 201 (application/json)
 
-
-
-
+<a id="marca"></a>
 # Marca [/api/marca]
 
 As marcas que podem ser consultadas e adicionadas referentes ao itens do inventário.
 
-
 ### Cadastrar marca (Create) [POST /cadastrar]
-	```
-    http://localhost:8080/api/marca/cadastrar
-    ```
+`http://localhost:8080/api/marca/cadastrar`
+
 + Request (application/json)
 
     + Headers
 
             Authorization: Bearer [access_token]
 
-
-
     + Body
 
-			{
-				"nome": "Dell"
-			}
-
-		
+```json
+{
+    "nome": "Dell"
+}
+```
 
 + Response 201 (application/json)
 	
 	+ Body
 	
-			{
-				"idMarca": 1,
-				"nome": "Dell"
-			}
+```json
+{
+    "idMarca": 1,
+    "nome": "Dell"
+}
+```
 
 + Response 204 (application/json)
 
-
 ### Listar todas as Marcas cadastradas (Read) [GET]
-	```
-    http://localhost:8080/api/marca
-    ```
+`http://localhost:8080/api/marca`
 	
 + Request (application/json)
 
@@ -157,22 +150,21 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 	
-			[
-			  {				
-				"idMarca": 1,
-				"nome": "Dell"
-			  },
-			  {
-				"idMarca": 2,
-				"nome": "CCE"	
-			  }
-			]
-
+```json
+[
+    {
+        "idMarca": 1,
+        "nome": "Dell"
+    },
+    {
+        "idMarca": 2,
+        "nome": "CCE"
+    }
+]
+```
 
 ### Buscar marca por id (Read) [GET /{id}]
-	```
-    http://localhost:8080/api/marca/1
-    ```
+`http://localhost:8080/api/marca/1`
 
 + Parameters
 	+ id (required, id, `1`) ... ID da Marca
@@ -187,16 +179,16 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
     + Body
 	
-			{				
-				"idMarca": 1,
-				"nome": "Dell"
-			}
-
+```json
+{
+    "idMarca": 1,
+    "nome": "Dell"
+}
+```
 
 ### Atualizar marca (Update) [PUT /atualizar/{id}]
-	```
-    http://localhost:8080/api/marca/atualizar/1
-    ```
+`http://localhost:8080/api/marca/atualizar/1`
+
 + Parameters
     + id (required, number, `1`) ... ID da Marca
 
@@ -206,35 +198,32 @@ As marcas que podem ser consultadas e adicionadas referentes ao itens do invent�
 
             Authorization: Bearer [access_token]
 
-
-
     + Body
 
-			{
-				"nome": "Lenovo"
-			}
-
-		
+```json
+{
+    "nome": "Lenovo"
+}
+```
 
 + Response 200 (application/json)
 	
 	+ Body
 	
-			{
-				"idMarca": 1,
-				"nome": "Lenovo"
-			}
+```json
+{
+    "idMarca": 1,
+    "nome": "Lenovo"
+}
+```
 
-
-
+<a id="patrimonio"></a>
 # Patrimônio [/api/patrimonio]
 
 Cria e consulta as informações do patrimônio
 
 ### Cadastrar informações do objeto a ser inventariado (Create) [POST /cadastrar]
-	```
-    http://localhost:8080/api/patrimonio/cadastrar
-    ```
+`http://localhost:8080/api/patrimonio/cadastrar`
 
 + Request (application/json)
 
@@ -242,38 +231,37 @@ Cria e consulta as informações do patrimônio
 
             Authorization: Bearer [access_token]
 
-
-
     + Body
 
-			{
-				"nome": "Monitor"
-				"descricao": "sala de TI3",
-				"marca": {
-				  "idMarca": 1
-				}
-			}
+```json
+{
+    "nome": "Monitor",
+    "descricao": "sala de TI3",
+    "marca": {
+        "idMarca": 1
+    }
+}
+```
 
 + Response 201 (application/json)
 	
 	+ Body
 	
-			{
-				"idPatrimonio": 3,
-				"nome": "Monitor",
-				"descricao": "sala de TI3",
-				"numeroTombo": 3,
-				"marca": {
-				  "idMarca": 1,
-				  "nome": null
-				}
-			}
+```json
+{
+    "idPatrimonio": 3,
+    "nome": "Monitor",
+    "descricao": "sala de TI3",
+    "numeroTombo": 3,
+    "marca": {
+        "idMarca": 1,
+        "nome": null
+    }
+}
+```			
 
-		
 ### Listar todas os Patrimônios cadastrados (Read) [GET /buscar]
-	```
-    http://localhost:8080/api/patrimonio/buscar
-    ```
+`http://localhost:8080/api/patrimonio/buscar`
 	
 + Request (application/json)
 
@@ -285,34 +273,33 @@ Cria e consulta as informações do patrimônio
 
     + Body
 	
-			[
-			  {				
-				"idMarca": 1,
-				"nome": "Monitor"
-				"descricao": "sala de TI3",
-				"numeroTombo": 1,
-				"marca": {
-				  "idMarca": 1,
-				  "nome": "Dell"
-				}
-			  },
-			  {				
-				"idMarca": 2,
-				"nome": "Teclado"
-				"descricao": "sala de Conferência",
-				"numeroTombo": 2,
-				"marca": {
-				  "idMarca": 1,
-				  "nome": "Dell"
-				}
-			  }
-			]
-
+```json
+[
+    {
+        "idMarca": 1,
+        "nome": "Monitor",
+        "descricao": "sala de TI3",
+        "numeroTombo": 1,
+        "marca": {
+            "idMarca": 1,
+            "nome": "Dell"
+        }
+    },
+    {
+        "idMarca": 2,
+        "nome": "Teclado",
+        "descricao": "sala de Conferência",
+        "numeroTombo": 2,
+        "marca": {
+            "idMarca": 1,
+            "nome": "Dell"
+        }
+    }
+]
+```
 
 ### Listar o Patrimônio cadastrado por ID (Read) [GET /buscar/{id}]
-	```
-    http://localhost:8080/api/patrimonio/buscar/1
-    ```
+`http://localhost:8080/api/patrimonio/buscar/1`
 
 + Parameters
     + id (required, number, `1`) ... ID do Patrimônio
@@ -323,27 +310,25 @@ Cria e consulta as informações do patrimônio
 
             Authorization: Bearer [access_token]
 
-
 + Response 200 (application/json)
 	
 	+ Body
 	
-			{
-				"idPatrimonio": 1,
-				"nome": "Monitor",
-				"descricao": "sala de TI3",
-				"numeroTombo": 1,
-				"marca": {
-				  "idMarca": 1,
-				  "nome": "Lenovo"
-				}
-			}
-
+```json
+{
+    "idPatrimonio": 1,
+    "nome": "Monitor",
+    "descricao": "sala de TI3",
+    "numeroTombo": 1,
+    "marca": {
+        "idMarca": 1,
+        "nome": "Lenovo"
+    }
+}
+```
 
 ### Buscar o Patrimônio cadastrado por número do inventário (Read) [GET /buscar/numero-tombo/{id}]
-	```
-    http://localhost:8080/api/patrimonio/buscar/numero-tombo/1
-    ```
+`http://localhost:8080/api/patrimonio/buscar/numero-tombo/1`
 
 + Parameters
     + id (required, number, `1`) ... Numero do inventário
@@ -354,18 +339,21 @@ Cria e consulta as informações do patrimônio
 
             Authorization: Bearer [access_token]
 
-
 + Response 200 (application/json)
 	
 	+ Body
 	
-			{
-				"idPatrimonio": 1,
-				"nome": "Monitor",
-				"descricao": "sala de TI3",
-				"numeroTombo": 1,
-				"marca": {
-				  "idMarca": 1,
-				  "nome": "Lenovo"
-				}
-			}
+```json
+{
+    "idPatrimonio": 1,
+    "nome": "Monitor",
+    "descricao": "sala de TI3",
+    "numeroTombo": 1,
+    "marca": {
+        "idMarca": 1,
+        "nome": "Lenovo"
+    }
+}
+```
+
+[Início](#inicio)
