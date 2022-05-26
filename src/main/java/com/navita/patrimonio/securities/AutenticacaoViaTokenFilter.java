@@ -1,4 +1,4 @@
-package com.navita.patrimonio.security;
+package com.navita.patrimonio.securities;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.navita.patrimonio.entities.Usuario;
-import com.navita.patrimonio.repository.UsuarioRepository;
+import com.navita.patrimonio.repositories.UsuarioRepository;
 
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 

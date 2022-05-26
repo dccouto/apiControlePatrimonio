@@ -1,4 +1,4 @@
-package com.navita.patrimonio.repository;
+package com.navita.patrimonio.repositories;
 
 import java.util.Optional;
 

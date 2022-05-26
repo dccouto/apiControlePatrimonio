@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import com.navita.patrimonio.TO.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioTO;
 import com.navita.patrimonio.entities.Marca;
 import com.navita.patrimonio.entities.Patrimonio;
-import com.navita.patrimonio.repository.PatrimonioRepository;
+import com.navita.patrimonio.repositories.PatrimonioRepository;
 
 @SpringBootTest
 class PatrimonioServiceTest {

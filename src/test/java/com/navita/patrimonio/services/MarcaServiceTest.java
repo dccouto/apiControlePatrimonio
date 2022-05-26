@@ -12,7 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.navita.patrimonio.entities.Marca;
 import com.navita.patrimonio.exceptions.MarcaException;
-import com.navita.patrimonio.repository.MarcaRepository;
+import com.navita.patrimonio.repositories.MarcaRepository;
 
 @SpringBootTest
 class MarcaServiceTest {

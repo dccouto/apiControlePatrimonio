@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.navita.patrimonio.TO.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioTO;
 
 @Entity
 @Table(name="Patrimonios")

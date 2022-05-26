@@ -1,4 +1,4 @@
-package com.navita.patrimonio.security;
+package com.navita.patrimonio.securities;
 
 import java.util.Date;
 

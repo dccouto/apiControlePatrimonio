@@ -1,4 +1,4 @@
-package com.navita.patrimonio.TO;
+package com.navita.patrimonio.dtos;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

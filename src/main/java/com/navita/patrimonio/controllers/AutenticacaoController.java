@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.navita.patrimonio.TO.LoginTO;
-import com.navita.patrimonio.TO.TokenTO;
-import com.navita.patrimonio.security.TokenService;
+import com.navita.patrimonio.dtos.LoginTO;
+import com.navita.patrimonio.dtos.TokenTO;
+import com.navita.patrimonio.securities.TokenService;
 
 @RestController
 @RequestMapping(value = "/api/auth")

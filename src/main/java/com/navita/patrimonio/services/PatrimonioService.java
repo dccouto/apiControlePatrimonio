@@ -7,75 +7,54 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.navita.patrimonio.TO.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioTO;
 import com.navita.patrimonio.entities.Patrimonio;
-import com.navita.patrimonio.repository.PatrimonioRepository;
+import com.navita.patrimonio.repositories.PatrimonioRepository;
 
 @Service
 public class PatrimonioService {
-	
-	@Autowired
-	PatrimonioRepository patrimonioRepository;
 
-	public Patrimonio cadastrarPatrimonio(PatrimonioTO patrimonioTO) throws Exception {
-		try {
-			Patrimonio patrimonio = new Patrimonio(patrimonioTO);
-			
-			gerarNumeroTombo(patrimonio);
-		
-			return patrimonioRepository.save(patrimonio);
-			
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
+	@Autowired
+	private PatrimonioRepository patrimonioRepository;
+
+	public Patrimonio cadastrarPatrimonio(PatrimonioTO patrimonioTO) {
+
+		Patrimonio patrimonio = new Patrimonio(patrimonioTO);
+
+		gerarNumeroTombo(patrimonio);
+
+		return patrimonioRepository.save(patrimonio);
+
 	}
 
 	private void gerarNumeroTombo(Patrimonio patrimonio) {
-		
+
 		int lastIndexOf = patrimonioRepository.findAll().size();
-		
-		if(lastIndexOf == BigDecimal.ZERO.intValue()) {
+
+		if (lastIndexOf == BigDecimal.ZERO.intValue()) {
 			patrimonio.setNumeroTombo(BigDecimal.ONE.longValue());
-			
-		}else {
+
+		} else {
 			Long ultimoPatrimonio = patrimonioRepository.findByLastNumeroTombo();
 			patrimonio.setNumeroTombo(++ultimoPatrimonio);
 		}
 	}
 
-	public List<Patrimonio> buscarPatrimonios() throws Exception {
-		try {
-			return patrimonioRepository.findAll();
-			
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
+	public List<Patrimonio> buscarPatrimonios() {
+		return patrimonioRepository.findAll();
 
 	}
 
-	public Patrimonio buscarPatrimonioPorId(Long id) throws Exception {
-		try {
-			return patrimonioRepository.findById(id).orElseThrow();
-			
-		
-		}catch(NoSuchElementException e) {
-			throw new NoSuchElementException("Não encontrado.");
-		}
-		catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
+	public Patrimonio buscarPatrimonioPorId(Long id) {
+
+		return patrimonioRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Não encontrado."));
+
 	}
 
-	public Patrimonio buscarPatrimonioPorNumeroTombo(Long id) throws Exception {
-		try {
-			return patrimonioRepository.findByNumeroTombo(id).orElseThrow();
-			
-		
-		}catch(NoSuchElementException e) {
-			throw new NoSuchElementException("Não encontrado.");
-		}
-		catch (Exception e) {
-			throw new Exception(e.getMessage());
-		}
+	public Patrimonio buscarPatrimonioPorNumeroTombo(Long id) {
+
+		return patrimonioRepository.findByNumeroTombo(id)
+				.orElseThrow(() -> new NoSuchElementException("Não encontrado."));
+
 	}
 }

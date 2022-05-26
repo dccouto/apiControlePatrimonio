@@ -1,4 +1,4 @@
-package com.navita.patrimonio.TO;
+package com.navita.patrimonio.dtos;
 
 public class TokenTO {
 

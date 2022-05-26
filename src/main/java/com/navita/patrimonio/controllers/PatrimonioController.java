@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.navita.patrimonio.TO.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioTO;
 import com.navita.patrimonio.services.PatrimonioService;
 
 @RestController
