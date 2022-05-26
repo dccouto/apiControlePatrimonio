@@ -9,11 +9,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.navita.patrimonio.dtos.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioDto;
+import com.navita.patrimonio.entities.interfaces.Convertible;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="Patrimonios")
-public class Patrimonio {
+public class Patrimonio implements Convertible<PatrimonioDto> {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,62 +41,18 @@ public class Patrimonio {
 	@JoinColumn(name="FK_MARCA")
 	private Marca marca;
 	
-	public Patrimonio() {
-		
-	}
-
-	public Patrimonio(Long idPatrimonio, String nome, String descricao, Long numeroTombo, Marca marca) {
-		this.idPatrimonio = idPatrimonio;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.numeroTombo = numeroTombo;
-		this.marca = marca;
-	}
 	
-	public Patrimonio(PatrimonioTO patrimonioTO) {
+	public Patrimonio(PatrimonioDto patrimonioTO) {
 		this.nome = patrimonioTO.getNome();
 		this.descricao = patrimonioTO.getDescricao();
 		this.marca = patrimonioTO.getMarca();
 	}
 
-	public Long getIdPatrimonio() {
-		return idPatrimonio;
-	}
 
-	public void setIdPatrimonio(Long idPatrimonio) {
-		this.idPatrimonio = idPatrimonio;
-	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Long getNumeroTombo() {
-		return numeroTombo;
-	}
-
-	public void setNumeroTombo(Long numeroTombo) {
-		this.numeroTombo = numeroTombo;
-	}
-
-	public Marca getMarca() {
-		return marca;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
+	@Override
+	public PatrimonioDto convertToDto() {
+		return new PatrimonioDto(nome, descricao, marca);
 	}
 	
 	

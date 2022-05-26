@@ -14,61 +14,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.navita.patrimonio.dtos.PatrimonioTO;
-import com.navita.patrimonio.services.PatrimonioService;
+import com.navita.patrimonio.dtos.PatrimonioDto;
+import com.navita.patrimonio.services.interfaces.PatrimonioInterface;
 
 @RestController
 @RequestMapping("/api/patrimonio")
 public class PatrimonioController {
-	
+
 	@Autowired
-	private PatrimonioService patrimonioService;
-	
+	private PatrimonioInterface patrimonioService;
+
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Object> cadastrarPatrimonio(@RequestBody @Valid PatrimonioTO patrimonioTO) {
-		try {
-			return ResponseEntity.status(HttpStatus.CREATED).body(patrimonioService.cadastrarPatrimonio(patrimonioTO));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> cadastrarPatrimonio(@RequestBody @Valid PatrimonioDto patrimonioTO) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(patrimonioService.cadastrarPatrimonio(patrimonioTO));
 	}
-	
+
 	@GetMapping("/buscar")
-	public ResponseEntity<Object> buscarPatrimonios(){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.buscarPatrimonios());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> buscarPatrimonios() {
+		return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.findAll());
 	}
-	
+
 	@GetMapping("/buscar/{id}")
-	public ResponseEntity<Object> buscarPatrimonioPorId(@PathVariable Long id){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.buscarPatrimonioPorId(id));
-		} catch (NoSuchElementException e) {
-		
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage()); 
-		
-		} catch (Exception e) {
-			
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> buscarPatrimonioPorId(@PathVariable Long id) {
+		return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.findById(id));
 	}
-	
+
 	@GetMapping("/buscar/numero-tombo/{id}")
-	public ResponseEntity<Object> buscarPatrimonioPorNumeroTombo(@PathVariable Long id){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.buscarPatrimonioPorNumeroTombo(id));
-			
-		} catch (NoSuchElementException e) {
-			
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-		
-		} catch (Exception e) {
-			
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> buscarPatrimonioPorNumeroTombo(@PathVariable Long id) {
+		return ResponseEntity.status(HttpStatus.OK).body(patrimonioService.buscarPatrimonioPorNumeroTombo(id));
+
 	}
 
 }

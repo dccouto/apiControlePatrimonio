@@ -5,19 +5,27 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import com.navita.patrimonio.dtos.PatrimonioTO;
+import com.navita.patrimonio.dtos.PatrimonioDto;
 import com.navita.patrimonio.entities.Patrimonio;
 import com.navita.patrimonio.repositories.PatrimonioRepository;
+import com.navita.patrimonio.services.interfaces.PatrimonioInterface;
 
 @Service
-public class PatrimonioService {
+class PatrimonioService implements PatrimonioInterface {
 
 	@Autowired
 	private PatrimonioRepository patrimonioRepository;
+	
+	@Override
+	public JpaRepository<Patrimonio, Long> getRepository() {
+		return this.patrimonioRepository;
+	}
 
-	public Patrimonio cadastrarPatrimonio(PatrimonioTO patrimonioTO) {
+	@Override
+	public Patrimonio cadastrarPatrimonio(PatrimonioDto patrimonioTO) {
 
 		Patrimonio patrimonio = new Patrimonio(patrimonioTO);
 
@@ -27,6 +35,7 @@ public class PatrimonioService {
 
 	}
 
+	
 	private void gerarNumeroTombo(Patrimonio patrimonio) {
 
 		int lastIndexOf = patrimonioRepository.findAll().size();
@@ -40,21 +49,15 @@ public class PatrimonioService {
 		}
 	}
 
-	public List<Patrimonio> buscarPatrimonios() {
-		return patrimonioRepository.findAll();
 
-	}
-
-	public Patrimonio buscarPatrimonioPorId(Long id) {
-
-		return patrimonioRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Não encontrado."));
-
-	}
-
+	@Override
 	public Patrimonio buscarPatrimonioPorNumeroTombo(Long id) {
 
 		return patrimonioRepository.findByNumeroTombo(id)
 				.orElseThrow(() -> new NoSuchElementException("Não encontrado."));
 
 	}
+
+
+
 }

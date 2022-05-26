@@ -1,4 +1,4 @@
-package com.navita.patrimonio.services;
+package com.navita.patrimonio.services.interfaces;
 
 import java.util.List;
 import java.util.stream.Collectors;
