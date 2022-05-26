@@ -12,60 +12,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.navita.patrimonio.entities.Marca;
-import com.navita.patrimonio.services.MarcaService;
+import com.navita.patrimonio.services.interfaces.MarcaInterface;
 
 @RestController
 @RequestMapping(value = "/api/marca")
 public class MarcaController {
 
 	@Autowired
-	private MarcaService marcaService;
-	
+	private MarcaInterface marcaService;
+
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Object> cadastrarMarca(@RequestBody Marca marca) {
-		try {
-			return  ResponseEntity.status(HttpStatus.CREATED).body(marcaService.cadastraMarca(marca));
-			
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+		return ResponseEntity.status(HttpStatus.CREATED).body(marcaService.cadastraMarca(marca));
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<Object> listarMarcas(){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(marcaService.buscarMarcas());
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> listarMarcas() {
+		return ResponseEntity.status(HttpStatus.OK).body(marcaService.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Object> listarMarcaPorId(@PathVariable Long id){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(marcaService.buscarMarcaPorId(id));
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> listarMarcaPorId(@PathVariable Long id) {
+		return ResponseEntity.status(HttpStatus.OK).body(marcaService.findById(id));
 	}
-	
+
 	@PutMapping("/atualizar/{id}")
-	public ResponseEntity<Object> atualizarMarca(@PathVariable Long id, @RequestBody Marca nome){
-		try {
-			return ResponseEntity.status(HttpStatus.OK).body(marcaService.atualizarMarca(id, nome.getNome()));
-			
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> atualizarMarca(@PathVariable Long id, @RequestBody Marca nome) {
+		return ResponseEntity.status(HttpStatus.OK).body(marcaService.atualizarMarca(id, nome.getNome()));
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-

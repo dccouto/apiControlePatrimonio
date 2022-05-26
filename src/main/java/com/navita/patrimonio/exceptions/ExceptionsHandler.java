@@ -1,25 +1,27 @@
 package com.navita.patrimonio.exceptions;
 
 import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class ExceptionHandler extends ResponseEntityExceptionHandler {
+public class ExceptionsHandler extends ResponseEntityExceptionHandler {
 
 	/**
 	 * Captura AppExceptions e retorna objeto Dto com as informações
 	 * 
 	 * @return {@link HttpStatus} Bad Request
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(MarcaException.class)
+	@ExceptionHandler(MarcaException.class)
 	public ResponseEntity<Object> marcaException(Throwable exception, WebRequest request) {
 		return sendResponseExceptionRequest(exception, request, HttpStatus.BAD_REQUEST);
 	}
@@ -29,19 +31,19 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 	 * 
 	 * @return {@link HttpStatus} Bad Request
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(UsuarioException.class)
+	@ExceptionHandler(UsuarioException.class)
 	public ResponseEntity<Object> usuarioException(Throwable exception, WebRequest request) {
 		return sendResponseExceptionRequest(exception, request, HttpStatus.BAD_REQUEST);
 	}
-
+	
 	/**
-	 * Captura Exceptions e retorna objeto Dto com as informações
+	 * Captura AppExceptions e retorna objeto Dto com as informações
 	 * 
-	 * @return {@link HttpStatus} Internal Error Server
+	 * @return {@link HttpStatus} Bad Request
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-	public ResponseEntity<Object> internalServerErrorException(Throwable exception, WebRequest request) {
-		return sendResponseExceptionRequest(exception, request, HttpStatus.INTERNAL_SERVER_ERROR);
+	@ExceptionHandler(NoSuchElementException.class)
+	public ResponseEntity<Object> noSuchElementException(Throwable exception, WebRequest request) {
+		return sendResponseExceptionRequest(exception, request, HttpStatus.NO_CONTENT);
 	}
 
 	/**
@@ -49,7 +51,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 	 * 
 	 * @return {@link HttpStatus} FORBIDDEN
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(BadCredentialsException.class)
+	@ExceptionHandler(BadCredentialsException.class)
 	public ResponseEntity<Object> badCredentialsException(Throwable exception, WebRequest request) {
 		return sendResponseExceptionRequest(exception, request, HttpStatus.FORBIDDEN);
 	}
@@ -59,7 +61,7 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 	 * 
 	 * @return {@link HttpStatus} UNAUTHORIZED
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(HttpClientErrorException.class)
+	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<Object> httpClientErrorException(Throwable exception, WebRequest request) {
 		return sendResponseExceptionRequest(exception, request, HttpStatus.UNAUTHORIZED);
 	}
@@ -69,11 +71,29 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 	 * 
 	 * @return {@link HttpStatus} UNAUTHORIZED
 	 */
-	@org.springframework.web.bind.annotation.ExceptionHandler(AccessDeniedException.class)
+	@ExceptionHandler(AccessDeniedException.class)
 	public ResponseEntity<Object> accessDeniedException(Throwable exception, WebRequest request) {
 		return sendResponseExceptionRequest(exception, request, HttpStatus.UNAUTHORIZED);
 	}
 
+	/**
+	 * Captura Exceptions e retorna objeto Dto com as informações
+	 * 
+	 * @return {@link HttpStatus} Internal Error Server
+	 */
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<Object> internalServerErrorException(Throwable exception, WebRequest request) {
+		return sendResponseExceptionRequest(exception, request, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	/**
+	 * Captura RuntimeException e retorna objeto Dto com as informações
+	 * 
+	 * @return {@link HttpStatus} Internal Error Server
+	 */
+	@ExceptionHandler(RuntimeException.class)
+	public ResponseEntity<Object> runtimeException(Throwable exception, WebRequest request) {
+		return sendResponseExceptionRequest(exception, request, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 	/**
 	 * Monta o objeto com as informações da Exception
 	 * 
