@@ -1,7 +1,5 @@
 package com.navita.patrimonio.controllers;
 
-import java.util.NoSuchElementException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,8 @@ public class PatrimonioController {
 	private PatrimonioInterface patrimonioService;
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Object> cadastrarPatrimonio(@RequestBody @Valid PatrimonioDto patrimonioTO) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(patrimonioService.cadastrarPatrimonio(patrimonioTO));
+	public ResponseEntity<Object> cadastrarPatrimonio(@RequestBody @Valid PatrimonioDto patrimonioDto) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(patrimonioService.cadastrarPatrimonio(patrimonioDto));
 	}
 
 	@GetMapping("/buscar")

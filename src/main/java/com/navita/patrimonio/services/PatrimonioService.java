@@ -1,7 +1,6 @@
 package com.navita.patrimonio.services;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;

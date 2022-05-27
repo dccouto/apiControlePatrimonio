@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 import com.navita.patrimonio.entities.Usuario;
 import com.navita.patrimonio.exceptions.UsuarioException;
 import com.navita.patrimonio.repositories.UsuarioRepository;
+import com.navita.patrimonio.services.interfaces.UsuarioInterface;
 
 @Service
-public class UsuarioService {
+class UsuarioService implements UsuarioInterface {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;

@@ -1,12 +1,12 @@
 package com.navita.patrimonio.dtos;
 
-public class TokenTO {
+public class TokenDto {
 
 	private String token;
 	private String tipo;
 	
 	
-	public TokenTO(String token, String tipo) {
+	public TokenDto(String token, String tipo) {
 		this.token = token;
 		this.tipo = tipo;
 	}

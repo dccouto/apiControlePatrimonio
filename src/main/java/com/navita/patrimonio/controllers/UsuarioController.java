@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.navita.patrimonio.entities.Usuario;
-import com.navita.patrimonio.services.UsuarioService;
+import com.navita.patrimonio.services.interfaces.UsuarioInterface;
 
 @RestController
-@RequestMapping(value="/api/usuario")
+@RequestMapping(value = "/api/usuario")
 public class UsuarioController {
-	
+
 	@Autowired
-	UsuarioService usuarioService;
+	private UsuarioInterface usuarioService;
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Usuario usuario){
-		try {
-			usuarioService.cadastrarUsuario(usuario);
-			return ResponseEntity.status(HttpStatus.CREATED).build();
-			
-		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-		}
+	public ResponseEntity<Object> cadastrarUsuario(@Valid @RequestBody Usuario usuario) {
+		usuarioService.cadastrarUsuario(usuario);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }
