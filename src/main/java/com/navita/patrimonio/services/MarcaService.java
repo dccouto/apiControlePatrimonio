@@ -51,7 +51,7 @@ class MarcaService implements MarcaInterface {
 		return this.marcaRepository;
 	}
 
-
+	@Override
 	public Page<MarcaDto> findByFilter(MarcaDto filtro, Pageable pageable) {
 		
 		return marcaRepository.findAll(marcaSpecification.toSpec(filtro) ,pageable)
