@@ -10,6 +10,11 @@ Recursos disponíveis para acesso via API:
 * [**Usuários**](#usuario)
 
 ## Informações importantes
+### Configuração de ambiente
++ Java 11
++ Lombok
++ Executar comando: __mvn clean compile__ para gerar o Metamodel
+
 ### Banco de dados
 + A API utiliza banco de dados em memória, não sendo necessário a instalação do mesmo.
 + Ao iniciar a aplicação a API irá popular a base de dados com algumas entradas para teste. O arquivo está no diretório `src/main/resources/data.sql`
